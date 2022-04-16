@@ -1,40 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-
-const addPadding = ([startIndex = 0, endIndex = 0], total = 0, pad = 0) => {
-  const paddedIndexes = [startIndex - pad, endIndex + pad];
-  if (paddedIndexes[0] < 0) {
-    paddedIndexes[0] = 0;
-  }
-  if (paddedIndexes[1] >= total) {
-    paddedIndexes[1] = total - 1;
-  }
-  return paddedIndexes;
-};
-const ContentWrapper = ({
-  height = 10,
-  top = 0,
-  visibleRowEls = [<div />],
-  rowHeight = 0
-}) => (
-  <div
-    style={{
-      top: `${top}px`,
-      height: `${height}px`,
-      position: "relative"
-    }}
-  >
-    {visibleRowEls.map((el, k) => (
-      <div
-        key={k}
-        style={{
-          height: rowHeight
-        }}
-      >
-        {el}
-      </div>
-    ))}
-  </div>
-);
+import { addPadding } from "../utils/addPadding";
+import { ContentWrapper } from "./ContentWrapper";
 
 export const VirtualScroller = ({
   viewPortHeight = 200,
